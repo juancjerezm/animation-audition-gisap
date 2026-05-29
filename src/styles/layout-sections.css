@@ -14,7 +14,7 @@
 
 .marquee__track {
   display: flex;
-  gap: 40px;
+  gap: 0;
   width: max-content;
   animation: marquee 30s linear infinite;
 }

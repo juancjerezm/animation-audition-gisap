@@ -4,18 +4,20 @@
 
 gsap.registerPlugin(ScrollTrigger);
 
-/* ---- Entrada del hero ---- */
-const heroTl = gsap.timeline({ delay: 0.5 });
-heroTl
-  .to(".hero__label", { opacity: 1, y: 0, duration: 0.8, ease: "power3.out" }, 0)
-  .to(".hero__title .char-inner", {
-    y: "0%",
-    duration: 1.1,
-    stagger: 0.1,
-    ease: "power4.out"
-  }, 0.3)
-  .to(".hero__desc", { opacity: 1, y: 0, duration: 0.9, ease: "power3.out" }, 1)
-  .to(".hero__scroll", { opacity: 1, duration: 0.6, ease: "power2.out" }, 1.2);
+/* ---- Entrada del hero — espera que las fuentes carguen para evitar FOUT/glitch ---- */
+document.fonts.ready.then(() => {
+  const heroTl = gsap.timeline({ delay: 0.3 });
+  heroTl
+    .to(".hero__label", { opacity: 1, y: 0, duration: 0.8, ease: "power3.out" }, 0)
+    .to(".hero__title .char-inner", {
+      y: "0%",
+      duration: 1.1,
+      stagger: 0.1,
+      ease: "power4.out"
+    }, 0.3)
+    .to(".hero__desc", { opacity: 1, y: 0, duration: 0.9, ease: "power3.out" }, 1)
+    .to(".hero__scroll", { opacity: 1, duration: 0.6, ease: "power2.out" }, 1.2);
+});
 
 /* ---- Linea de scroll ---- */
 gsap.to(".hero__scroll-line", {
