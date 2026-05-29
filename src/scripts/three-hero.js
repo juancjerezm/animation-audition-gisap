@@ -177,20 +177,21 @@ function animate() {
 
 animationId = requestAnimationFrame(animate);
 
-/* ---- REDIMENSIONAR (ignora colapso de barra de direcciones en mobile) ---- */
+/* ---- REDIMENSIONAR — solo reacciona a cambios reales, ignora address bar mobile ---- */
 let lastW = window.innerWidth;
-let lastH = window.innerHeight;
+let lastRatio = window.innerWidth / window.innerHeight;
 
 window.addEventListener('resize', () => {
   const w = window.innerWidth;
   const h = window.innerHeight;
-  /* Solo reacciona a cambios reales: orientación o resize de escritorio.
-     Ignora el colapso de address bar (Δ ~56px) que dispara resize fantasma. */
-  if (Math.abs(w - lastW) < 2 && Math.abs(h - lastH) < 60) return;
+  const ratio = w / h;
+  /* Si el aspect ratio no cambió (ej: address bar que solo achica altura),
+     o el ancho no se movió, es un resize fantasma — ignorar. */
+  if (Math.abs(w - lastW) < 2 && Math.abs(ratio - lastRatio) < 0.02) return;
   lastW = w;
-  lastH = h;
+  lastRatio = ratio;
 
-  camera.aspect = w / h;
+  camera.aspect = ratio;
   camera.updateProjectionMatrix();
   renderer.setSize(w, h);
   updateVizPosition();
