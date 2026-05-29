@@ -2,7 +2,7 @@
 
 Landing page de producto para Convertix (auriculares inalámbricos premium) con animaciones de alto rendimiento usando GSAP y Three.js. Cada animación tiene un propósito: guiar, sorprender o reforzar credibilidad.
 
-**Resultado**: página 100% funcional, responsive, con modales FLIP, carrusel infinito multi-card y canvas 3D optimizado que se pausa al salir del viewport.
+**Resultado**: página 100% funcional, responsive, con modales FLIP, carrusel infinito multi-card, menú hamburguesa mobile premium y canvas 3D optimizado que se pausa al salir del viewport.
 
 ## Quick Start
 
@@ -15,16 +15,17 @@ Abrir `http://localhost:3000`. La página carga GSAP, ScrollTrigger y Three.js d
 
 ## Arquitectura
 
-El proyecto se refactorizó de 2 archivos monolíticos (592 líneas JS, 512 líneas CSS) a 13 archivos enfocados por responsabilidad.
+El proyecto se refactorizó de 2 archivos monolíticos (592 líneas JS, 512 líneas CSS) a 14 archivos enfocados por responsabilidad.
 
-### JavaScript (4 módulos)
+### JavaScript (5 módulos)
 
 | Archivo | Responsabilidad | Técnica clave |
 |---------|----------------|---------------|
 | `three-hero.js` | Canvas 3D: visualizador + partículas | Three.js, `IntersectionObserver` para pausar GPU, `Date.now()` cacheado por frame, `passive: true` en scroll |
 | `animations.js` | Scroll triggers GSAP para todas las secciones | `ScrollTrigger`, timelines, stagger, scrub parallax |
 | `modal.js` | Modales de features con FLIP | Expansión whole-card (App Store style), compensación de scrollbar, `gsap.timeline` |
-| `carousel.js` | Carrusel infinito multi-card | Clone-teleport pattern, `transitionend`, touch swipe, keyboard (sin robar inputs), resize debounce |
+| `carousel.js` | Carrusel infinito multi-card | Clone-teleport pattern, interrupt en click, `transitionend`, touch swipe, keyboard (sin robar inputs), resize debounce |
+| `menu.js` | Menú hamburguesa mobile premium | GSAP timeline paused, stagger links (80ms), `reverse()` al cerrar, scroll suave con delay |
 
 ### CSS (9 archivos)
 
@@ -32,20 +33,23 @@ El proyecto se refactorizó de 2 archivos monolíticos (592 líneas JS, 512 lín
 |---------|----------------|
 | `reset.css` | CSS reset + variables (`--color-bg: #FEF6E5`, `--color-text: #0A0A0A`) |
 | `typography.css` | Fuentes Inter + Syne, escala tipográfica, utilidades |
-| `layout-header.css` | Header glassmorphism + navegación |
+| `layout-header.css` | Header glassmorphism + navegación desktop + menú hamburguesa mobile |
 | `layout-hero.css` | Hero section, texto partido, scroll indicator |
 | `layout-sections.css` | Features grid, showcase, stats, lifestyle, CTA |
 | `layout-bottom.css` | Marquee + footer |
 | `components.css` | Feature cards, stat cards, botones |
 | `modal.css` | Modal overlay, contenido, animaciones base |
-| `carousel-testimonials.css` | Viewport, track, cards, dots, arrows, contador |
+| `carousel-testimonials.css` | Viewport, track, cards (con hover), dots, arrows, contador |
 
 ## Decisiones Técnicas
 
 | Decisión | Por qué |
 |----------|---------|
 | **Clone-teleport para carrusel infinito** | Sin salto visible al llegar al final. Clona `cardsPerView` elementos al inicio y final, teleporta sin transición al cruzar el borde. |
+| **Interrupt en carrusel** | Las flechas ignoraban clicks durante el autoplay. Ahora fuerza snap a la posición actual (`carouselInterrupt()`) y arranca nueva transición. Responde siempre. |
 | **FLIP whole-card expansion** | La card entera crece desde su posición hasta llenar el modal. Más fluido que animar elementos individuales por separado. |
+| **Menú hamburguesa GSAP timeline paused** | Timeline pre-construido con `play()`/`reverse()`. Links entran con stagger (80ms), overlay con fade. Cierra con `reverse()` al clickear cualquier link. |
+| **Morph CSS hamburguesa → X** | 3 líneas, `translateY(±7px)` + `rotate(±45deg)`. Distancia entre centros = gap(5px) + height(2px) = 7px. |
 | **IntersectionObserver en el canvas 3D** | `requestAnimationFrame` se detiene cuando el hero sale del viewport. La GPU deja de trabajar. Se reanuda automáticamente al volver. |
 | **`Date.now()` cacheado por frame** | 6 llamadas a `Date.now()` reducidas a 1. Micro-optimización que evita overhead de llamadas al sistema en el hot path. |
 | **Compensación de scrollbar en modales** | `body { overflow: hidden }` causa layout shift. Se calcula el ancho del scrollbar y se aplica `padding-right` al body y header. |
@@ -55,7 +59,7 @@ El proyecto se refactorizó de 2 archivos monolíticos (592 líneas JS, 512 lín
 
 ```
 animation-gsap/
-├── index.html                    # Página única, 7 secciones
+├── index.html                    # Página única, 443 líneas, 7 secciones + menú overlay
 ├── assets/
 │   ├── logo.png                  # Logo Convertix
 │   ├── product-front.png         # Hero product shot
@@ -64,19 +68,20 @@ animation-gsap/
 ├── src/
 │   ├── scripts/
 │   │   ├── three-hero.js         # Canvas 3D (199 líneas)
-│   │   ├── animations.js         # GSAP scroll triggers (118 líneas)
-│   │   ├── carousel.js           # Carrusel infinito (208 líneas)
+│   │   ├── animations.js         # GSAP scroll triggers (133 líneas)
+│   │   ├── carousel.js           # Carrusel infinito (217 líneas)
+│   │   ├── menu.js               # Menú hamburguesa GSAP (103 líneas)
 │   │   └── modal.js              # Modales FLIP (217 líneas)
 │   └── styles/
 │       ├── reset.css
 │       ├── typography.css
-│       ├── layout-header.css
+│       ├── layout-header.css     # Header + hamburguesa (157 líneas)
 │       ├── layout-hero.css
 │       ├── layout-sections.css
 │       ├── layout-bottom.css
 │       ├── components.css
 │       ├── modal.css
-│       └── carousel-testimonials.css
+│       └── carousel-testimonials.css  # Carrusel + hover (157 líneas)
 ├── package.json
 └── pnpm-lock.yaml
 ```
@@ -89,9 +94,10 @@ animation-gsap/
 4. **Showcase** — Imagen de producto con parallax de texto gigante de fondo.
 5. **Stats** — 4 métricas animadas con entrada staggered.
 6. **Lifestyle** — Grid de imágenes con layout asimétrico.
-7. **Testimonios** — Carrusel infinito con 8 testimonios reales. Desktop: 2 cards visibles. Mobile: 1.
+7. **Testimonios** — Carrusel infinito con 8 testimonios reales. Desktop: 2 cards visibles. Mobile: 1. Hover con sombra.
 8. **CTA** — Llamada a la acción con animación de entrada.
 9. **Footer** — Navegación, contacto (convertixweb.app, email, Instagram, Facebook), scroll-to-top.
+10. **Menú hamburguesa mobile** — Overlay full-screen con blur, links con stagger GSAP, footer con redes sociales, icono morph a X.
 
 ## Dependencias
 
@@ -99,7 +105,7 @@ Todas desde CDN — cero build step.
 
 | Dependencia | Versión | Uso |
 |------------|---------|-----|
-| GSAP | 3.12.5 | Animaciones scroll, FLIP, timelines |
+| GSAP | 3.12.5 | Animaciones scroll, FLIP, timelines, menú hamburguesa |
 | ScrollTrigger | 3.12.5 | Animaciones activadas por posición de scroll |
 | Three.js | r128 | Canvas 3D del hero (visualizador + partículas) |
 
