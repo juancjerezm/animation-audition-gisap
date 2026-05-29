@@ -49,8 +49,35 @@
         <a href="#reviews">Reseñas</a>
       </nav>
       <a href="#cta" class="header__cta">Más información</a>
+      <button class="header__hamburger" aria-label="Abrir menú" aria-expanded="false">
+        <span class="header__hamburger-line"></span>
+        <span class="header__hamburger-line"></span>
+        <span class="header__hamburger-line"></span>
+      </button>
     </div>
   </header>
+
+  <!-- Menú mobile overlay -->
+  <div class="mobile-menu" aria-hidden="true">
+    <div class="mobile-menu__bg"></div>
+    <div class="mobile-menu__content">
+      <nav class="mobile-menu__nav">
+        <a href="#features" class="mobile-menu__link">Características</a>
+        <a href="#showcase" class="mobile-menu__link">Producto</a>
+        <a href="#lifestyle" class="mobile-menu__link">Estilo de vida</a>
+        <a href="#reviews" class="mobile-menu__link">Reseñas</a>
+      </nav>
+      <a href="#cta" class="mobile-menu__cta">Más información</a>
+      <div class="mobile-menu__footer">
+        <a href="https://convertixweb.app/" target="_blank" rel="noopener" class="mobile-menu__social">convertixweb.app</a>
+        <div class="mobile-menu__social-row">
+          <a href="https://www.instagram.com/convertixweb/" target="_blank" rel="noopener">Instagram</a>
+          <span class="mobile-menu__social-sep">·</span>
+          <a href="https://www.facebook.com/profile.php?id=61588761966347" target="_blank" rel="noopener">Facebook</a>
+        </div>
+      </div>
+    </div>
+  </div>
 
   <!-- ============================================================
        HERO 3D CANVAS
@@ -409,6 +436,7 @@
   <script src="src/scripts/three-hero.js"></script>
   <script src="src/scripts/animations.js"></script>
   <script src="src/scripts/carousel.js"></script>
+  <script src="src/scripts/menu.js"></script>
   <script src="src/scripts/modal.js"></script>
 
 </body>

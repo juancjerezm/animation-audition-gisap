@@ -21,7 +21,7 @@
   let currentIndex;
   let carouselAutoplay;
   let isTransitioning = false;
-  const TRANSITION = 'transform 1.2s cubic-bezier(0.76, 0, 0.24, 1)';
+  const TRANSITION = 'transform 0.7s cubic-bezier(0.76, 0, 0.24, 1)';
 
   carouselTotalEl.textContent = String(realTotal).padStart(2, '0');
 
@@ -127,22 +127,31 @@
     isTransitioning = false;
   }
 
+  function carouselInterrupt() {
+    /* Forzar snap a la posición actual — interrumpe cualquier transición en curso.
+       Si no hay transición activa es un no-op (ya está en esa posición). */
+    const step = getStepSize();
+    carouselTrack.style.transition = 'none';
+    carouselTrack.style.transform = `translateX(-${currentIndex * step}px)`;
+    carouselTrack.offsetHeight;
+  }
+
   function carouselGoNext() {
-    if (isTransitioning) return;
+    carouselInterrupt();
     isTransitioning = true;
     currentIndex++;
     carouselSlide();
   }
 
   function carouselGoPrev() {
-    if (isTransitioning) return;
+    carouselInterrupt();
     isTransitioning = true;
     currentIndex--;
     carouselSlide();
   }
 
   function carouselGoTo(index) {
-    if (isTransitioning) return;
+    carouselInterrupt();
     isTransitioning = true;
     currentIndex = index + cardsPerView;
     carouselSlide();
