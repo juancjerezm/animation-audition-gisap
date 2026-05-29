@@ -90,4 +90,7 @@
   .hero__desc {
     max-width: 100%;
   }
+  .hero__scroll {
+    display: none;
+  }
 }
