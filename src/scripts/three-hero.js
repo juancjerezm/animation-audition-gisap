@@ -2,8 +2,14 @@
    HERO 3D — Visualizador + Partículas
    ============================================================ */
 
-/* ---- SETUP THREE.JS ---- */
+/* ---- GUARDIAS DE PRODUCCIÓN ---- */
 const canvas = document.getElementById('hero-canvas');
+if (!canvas || typeof THREE === 'undefined') return;
+
+(function () {
+'use strict';
+
+/* ---- SETUP THREE.JS ---- */
 const renderer = new THREE.WebGLRenderer({ canvas, alpha: true, antialias: true });
 renderer.setPixelRatio(Math.min(window.devicePixelRatio, 2));
 renderer.setSize(window.innerWidth, window.innerHeight);
@@ -197,13 +203,17 @@ window.addEventListener('resize', () => {
 });
 
 /* Ocultar canvas — solo se desvanece en los últimos 150px del hero */
-gsap.to('#hero-canvas', {
-  scrollTrigger: {
-    trigger: '.hero',
-    start: 'bottom top-=150px',
-    end: 'bottom top',
-    scrub: true,
-  },
-  opacity: 0,
-  duration: 0.1,
-});
+if (typeof gsap !== 'undefined' && typeof ScrollTrigger !== 'undefined') {
+  gsap.to('#hero-canvas', {
+    scrollTrigger: {
+      trigger: '.hero',
+      start: 'bottom top-=150px',
+      end: 'bottom top',
+      scrub: true,
+    },
+    opacity: 0,
+    duration: 0.1,
+  });
+}
+
+})();

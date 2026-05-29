@@ -2,10 +2,21 @@
    ANIMACIONES GSAP — Scroll triggers
    ============================================================ */
 
+if (typeof gsap === 'undefined' || typeof ScrollTrigger === 'undefined') return;
+
+(function () {
+'use strict';
+
 gsap.registerPlugin(ScrollTrigger);
 
 /* ---- Entrada del hero — espera que las fuentes carguen para evitar FOUT/glitch ---- */
-document.fonts.ready.then(() => {
+/* Timeout de 3s: si las fuentes nunca terminan de cargar, arranca igual */
+const fontsReady = Promise.race([
+  document.fonts.ready,
+  new Promise(resolve => setTimeout(resolve, 3000))
+]);
+
+fontsReady.then(() => {
   const heroTl = gsap.timeline({ delay: 0.3 });
   heroTl
     .to(".hero__label", { opacity: 1, y: 0, duration: 0.8, ease: "power3.out" }, 0)
@@ -118,3 +129,5 @@ ctaTl
   .to(".cta-section__label", { opacity: 1, y: 0, duration: 0.7, ease: "power3.out" })
   .to(".cta-section__title", { opacity: 1, y: 0, duration: 0.9, delay: 0.15, ease: "power4.out" }, 0)
   .to(".cta-section__btn", { opacity: 1, y: 0, duration: 0.7, delay: 0.3, ease: "power3.out" }, 0);
+
+})();
