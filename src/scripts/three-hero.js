@@ -179,19 +179,17 @@ animationId = requestAnimationFrame(animate);
 
 /* ---- REDIMENSIONAR — solo reacciona a cambios reales, ignora address bar mobile ---- */
 let lastW = window.innerWidth;
-let lastRatio = window.innerWidth / window.innerHeight;
 
 window.addEventListener('resize', () => {
   const w = window.innerWidth;
-  const h = window.innerHeight;
-  const ratio = w / h;
-  /* Si el aspect ratio no cambió (ej: address bar que solo achica altura),
-     o el ancho no se movió, es un resize fantasma — ignorar. */
-  if (Math.abs(w - lastW) < 2 && Math.abs(ratio - lastRatio) < 0.02) return;
+  /* Si el ancho no cambió, es address bar colapsándose (mobile) o resize
+     solo vertical (escritorio). En cualquier caso, el canvas no necesita
+     re-renderizarse porque el aspect ratio del contenido 3D no se afecta. */
+  if (Math.abs(w - lastW) < 2) return;
   lastW = w;
-  lastRatio = ratio;
 
-  camera.aspect = ratio;
+  const h = window.innerHeight;
+  camera.aspect = w / h;
   camera.updateProjectionMatrix();
   renderer.setSize(w, h);
   updateVizPosition();
