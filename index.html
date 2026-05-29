@@ -1,0 +1,419 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Convertix — Auriculares Inalámbricos Premium</title>
+  <meta name="description" content="Experimenta la perfección del audio con Convertix. Auriculares inalámbricos premium diseñados para quienes exigen excelencia." />
+
+  <!-- Favicon -->
+  <link rel="icon" type="image/svg+xml" href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'><defs><linearGradient id='g' x1='0%25' y1='0%25' x2='100%25' y2='100%25'><stop offset='0%25' stop-color='%23FEF6E5'/><stop offset='100%25' stop-color='%23FEF6E5'/></linearGradient></defs><circle cx='50' cy='50' r='45' fill='url(%23g)' stroke='%23000' stroke-width='4'/></svg>" />
+
+  <!-- Fonts -->
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800;900&family=Syne:wght@400;500;600;700;800&display=swap" rel="stylesheet" />
+
+  <!-- Styles -->
+  <link rel="stylesheet" href="src/styles/reset.css">
+  <link rel="stylesheet" href="src/styles/typography.css">
+  <link rel="stylesheet" href="src/styles/layout-header.css">
+  <link rel="stylesheet" href="src/styles/layout-hero.css">
+  <link rel="stylesheet" href="src/styles/layout-sections.css">
+  <link rel="stylesheet" href="src/styles/layout-bottom.css">
+  <link rel="stylesheet" href="src/styles/components.css">
+  <link rel="stylesheet" href="src/styles/modal.css">
+  <link rel="stylesheet" href="src/styles/carousel-testimonials.css">
+
+  <!-- GSAP CDN -->
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.5/gsap.min.js"></script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.5/ScrollTrigger.min.js"></script>
+
+  <!-- Three.js CDN -->
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/three.js/r128/three.min.js"></script>
+</head>
+<body>
+
+  <!-- ============================================================
+       HEADER
+       ============================================================ -->
+  <header class="header">
+    <div class="wrapper header__inner">
+      <a href="#" class="header__logo">
+        <img src="assets/logo.png" alt="Convertix" height="36" style="width:auto;max-height:36px" />
+      </a>
+      <nav class="header__nav">
+        <a href="#features">Características</a>
+        <a href="#showcase">Producto</a>
+        <a href="#lifestyle">Estilo de vida</a>
+        <a href="#reviews">Reseñas</a>
+      </nav>
+      <a href="#cta" class="header__cta">Más información</a>
+    </div>
+  </header>
+
+  <!-- ============================================================
+       HERO 3D CANVAS
+       ============================================================ -->
+  <canvas id="hero-canvas"></canvas>
+
+  <!-- ============================================================
+       HERO
+       ============================================================ -->
+  <section class="hero">
+    <div class="wrapper">
+      <div class="hero__content">
+        <p class="label hero__label">Audio Inalámbrico Premium</p>
+          <h1 class="display hero__title" id="hero-title">
+            <span class="char"><span class="char-inner">Tu sonido.</span></span><br>
+            <span class="char"><span class="char-inner">Perfeccionado.</span></span>
+          </h1>
+        <div class="hero__bottom">
+          <p class="body-lg hero__desc">
+            Los auriculares inalámbricos que buscabas. Ingeniería de precisión + diseño minimalista.
+          </p>
+          <div class="hero__scroll">
+            <div class="hero__scroll-line"></div>
+            <span class="label">Deslizar</span>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ============================================================
+       MARQUEE
+       ============================================================ -->
+  <div class="marquee" aria-hidden="true">
+    <div class="marquee__track">
+      <div class="marquee__item">40h de Batería <span>✦</span> Cancelación Activa de Ruido <span>✦</span> Audio Espacial <span>✦</span> Controles Táctiles <span>✦</span> Carga Inalámbrica <span>✦</span> Construcción Premium <span>✦</span></div>
+      <div class="marquee__item">40h de Batería <span>✦</span> Cancelación Activa de Ruido <span>✦</span> Audio Espacial <span>✦</span> Controles Táctiles <span>✦</span> Carga Inalámbrica <span>✦</span> Construcción Premium <span>✦</span></div>
+    </div>
+  </div>
+
+  <!-- ============================================================
+       FEATURES
+       ============================================================ -->
+  <section class="features section" id="features">
+    <div class="wrapper">
+      <div class="features__header">
+        <p class="label features__label">Lo que los hace diferentes</p>
+        <h2 class="headline features__title">Precisión con <br>intención.</h2>
+      </div>
+      <div class="features__grid">
+        <article class="feature-card" data-feature-card data-modal-id="01" tabindex="0">
+          <span class="feature-card__number">01</span>
+          <svg class="feature-card__icon" viewBox="0 0 48 48" fill="none"><circle cx="24" cy="24" r="18" stroke="currentColor" stroke-width="2"/><path d="M24 14v20M18 24h12" stroke="currentColor" stroke-width="2" stroke-linecap="round"/></svg>
+          <h3 class="title feature-card__title">40hr de Batería</h3>
+          <p class="feature-card__desc">Una semana de uso con una carga. Carga rápida: 10 min = 4hr.</p>
+        </article>
+        <article class="feature-card" data-feature-card data-modal-id="02">
+          <span class="feature-card__number">02</span>
+          <svg class="feature-card__icon" viewBox="0 0 48 48" fill="none"><path d="M8 24C8 24 13 10 24 10s16 14 16 14-5 14-16 14S8 24 8 24z" stroke="currentColor" stroke-width="2" fill="none"/><circle cx="24" cy="24" r="5" stroke="currentColor" stroke-width="2"/></svg>
+          <h3 class="title feature-card__title">Cancelación Activa de Ruido</h3>
+          <p class="feature-card__desc">6 micrófonos. Silenciá el ruido, amplificá tu mundo.</p>
+        </article>
+        <article class="feature-card" data-feature-card data-modal-id="03">
+          <span class="feature-card__number">03</span>
+          <svg class="feature-card__icon" viewBox="0 0 48 48" fill="none"><circle cx="24" cy="24" r="18" stroke="currentColor" stroke-width="2"/><circle cx="24" cy="24" r="8" stroke="currentColor" stroke-width="2"/><circle cx="24" cy="24" r="3" fill="currentColor"/></svg>
+          <h3 class="title feature-card__title">Audio Espacial</h3>
+          <p class="feature-card__desc">Audio 3D con seguimiento de cabeza. Estás dentro de la música.</p>
+        </article>
+        <article class="feature-card" data-feature-card data-modal-id="04">
+          <span class="feature-card__number">04</span>
+          <svg class="feature-card__icon" viewBox="0 0 48 48" fill="none"><path d="M14 24c0-5.5 4.5-10 10-10s10 4.5 10 10-4.5 10-10 10-10-4.5-10-10z" stroke="currentColor" stroke-width="2"/><path d="M14 24h20" stroke="currentColor" stroke-width="2" stroke-linecap="round"/></svg>
+          <h3 class="title feature-card__title">Controles Táctiles</h3>
+          <p class="feature-card__desc">Toque, desliz, mantené. Todo sin sacar el teléfono del bolsillo.</p>
+        </article>
+        <article class="feature-card" data-feature-card data-modal-id="05">
+          <span class="feature-card__number">05</span>
+          <svg class="feature-card__icon" viewBox="0 0 48 48" fill="none"><rect x="16" y="8" width="16" height="32" rx="4" stroke="currentColor" stroke-width="2"/><path d="M20 36h8" stroke="currentColor" stroke-width="2" stroke-linecap="round"/></svg>
+          <h3 class="title feature-card__title">Carga Inalámbrica</h3>
+          <p class="feature-card__desc">Compatible Qi. Case que carga auriculares y teléfono a la vez.</p>
+        </article>
+        <article class="feature-card" data-feature-card data-modal-id="06">
+          <span class="feature-card__number">06</span>
+          <svg class="feature-card__icon" viewBox="0 0 48 48" fill="none"><path d="M24 8l3 9h9l-7 6 3 9-8-6-8 6 3-9-7-6h9z" stroke="currentColor" stroke-width="2" stroke-linejoin="round"/></svg>
+          <h3 class="title feature-card__title">Policarbonato microestructurado + silicona médica.</h3>
+          <p class="feature-card__desc">Hechos para acompañarte.</p>
+        </article>
+
+      </div>
+    </div>
+  </section>
+
+  <!-- ============================================================
+       SHOWCASE
+       ============================================================ -->
+  <section class="showcase section" id="showcase">
+    <span class="showcase__bg-text" aria-hidden="true">AUDIO</span>
+    <div class="wrapper showcase__content">
+      <div class="showcase__text">
+        <p class="label showcase__label">El Producto</p>
+        <h2 class="headline showcase__title">Cada detalle<br>es una decisión.</h2>
+        <p class="body-lg showcase__desc">
+           No se trata de tener menos — es de que cada pieza tenga un motivo. Cada curva, cada material, cada gramo fue optimizado para un sonido que vale la pena.
+        </p>
+      </div>
+      <div class="showcase__image">
+        <div class="showcase__image-glow"></div>
+        <img src="assets/product-front.png" alt="Convertix Pro — Auriculares inalámbricos premium" loading="lazy" />
+      </div>
+    </div>
+  </section>
+
+  <!-- ============================================================
+       STATS
+       ============================================================ -->
+  <section class="stats section">
+    <div class="wrapper">
+      <div class="stats__grid">
+        <div class="stat">
+          <div class="stat__number">40h</div>
+          <div class="stat__label">Horas de batería</div>
+        </div>
+        <div class="stat">
+          <div class="stat__number">6</div>
+          <div class="stat__label">Micrófonos ANC</div>
+        </div>
+        <div class="stat">
+          <div class="stat__number">3D</div>
+          <div class="stat__label">Audio Espacial</div>
+        </div>
+        <div class="stat">
+          <div class="stat__number">IPX5</div>
+          <div class="stat__label">Resistencia al agua</div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ============================================================
+       LIFESTYLE
+       ============================================================ -->
+  <section class="lifestyle section" id="lifestyle">
+    <div class="wrapper">
+      <div class="lifestyle__header">
+        <h2 class="headline lifestyle__title">Hechos para <br>tu mundo.</h2>
+          <p class="body-lg lifestyle__desc">
+            De tu camino al trabajo a tu última llamada del día. Diseñados para moverse contigo, no contra ti.
+          </p>
+      </div>
+      <div class="lifestyle__grid">
+        <div class="lifestyle__big">
+          <img src="assets/lifestyle-01.png" alt="Convertix en tu día a día" loading="lazy" />
+        </div>
+        <div class="lifestyle__small">
+          <img src="assets/headphone-lifestyle-01.jpg" alt="Convertix lifestyle" loading="lazy" />
+        </div>
+        <div class="lifestyle__small">
+          <img src="assets/headphone-lifestyle-02.jpg" alt="Convertix close-up" loading="lazy" />
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ============================================================
+       TESTIMONIALS
+       ============================================================ -->
+  <section class="testimonials section" id="reviews">
+    <div class="wrapper">
+      <div class="testimonials__header">
+        <h2 class="headline testimonials__title">Lo que dice la gente</h2>
+      </div>
+      <div class="testimonials-carousel">
+        <div class="testimonials-carousel__viewport">
+          <div class="testimonials-carousel__track">
+            <div class="testimonials-carousel__card">
+              <p class="testimonials-carousel__quote">"Finalmente unos earbuds que igualan la calidad de mis monitores de estudio. El audio espacial es genuinamente transformador para mezclar."</p>
+              <div class="testimonials-carousel__author">
+                <div class="testimonials-carousel__avatar">JC</div>
+                <div class="testimonials-carousel__info">
+                  <div class="testimonials-carousel__name">Juan Carlos Mendoza</div>
+                  <div class="testimonials-carousel__role">Productor Musical, Medellín</div>
+                </div>
+              </div>
+            </div>
+            <div class="testimonials-carousel__card">
+              <p class="testimonials-carousel__quote">"La batería es una locura. Los cargué una vez hace tres semanas y siguen funcionando. Casi que no pienso en ellos."</p>
+              <div class="testimonials-carousel__author">
+                <div class="testimonials-carousel__avatar">VP</div>
+                <div class="testimonials-carousel__info">
+                  <div class="testimonials-carousel__name">Valentina Pérez</div>
+                  <div class="testimonials-carousel__role">Diseñadora UX, Bogotá</div>
+                </div>
+              </div>
+            </div>
+            <div class="testimonials-carousel__card">
+              <p class="testimonials-carousel__quote">"La cancelación de ruido es mejor que cualquier cosa que probé a 3x el precio. Estos son mi nuevo carry diario, sin duda."</p>
+              <div class="testimonials-carousel__author">
+                <div class="testimonials-carousel__avatar">SR</div>
+                <div class="testimonials-carousel__info">
+                  <div class="testimonials-carousel__name">Sebastián Rodríguez</div>
+                  <div class="testimonials-carousel__role">Ing. de Sonido, Cali</div>
+                </div>
+              </div>
+            </div>
+            <div class="testimonials-carousel__card">
+              <p class="testimonials-carousel__quote">"La calidad de construcción es excepcional. Dos años después siguen sintiendo como nuevos. Es el tipo de producto que respeto."</p>
+              <div class="testimonials-carousel__author">
+                <div class="testimonials-carousel__avatar">MG</div>
+                <div class="testimonials-carousel__info">
+                  <div class="testimonials-carousel__name">María Camila García</div>
+                  <div class="testimonials-carousel__role">Arquitecta, Barranquilla</div>
+                </div>
+              </div>
+            </div>
+            <div class="testimonials-carousel__card">
+              <p class="testimonials-carousel__quote">"La integración con mi home office fue inmediata. Los uso 8 horas diarias en calls y la batería nunca me dejó tirado."</p>
+              <div class="testimonials-carousel__author">
+                <div class="testimonials-carousel__avatar">AV</div>
+                <div class="testimonials-carousel__info">
+                  <div class="testimonials-carousel__name">Andrés Felipe Valencia</div>
+                  <div class="testimonials-carousel__role">Tech Lead, Pereira</div>
+                </div>
+              </div>
+            </div>
+            <div class="testimonials-carousel__card">
+              <p class="testimonials-carousel__quote">"Soy runner de montaña y son los únicos que aguantan mi ritmo. El ANC bloquea todo el ruido del gimnasio sin problema."</p>
+              <div class="testimonials-carousel__author">
+                <div class="testimonials-carousel__avatar">LD</div>
+                <div class="testimonials-carousel__info">
+                  <div class="testimonials-carousel__name">Laura Sofía Duque</div>
+                  <div class="testimonials-carousel__role">Atleta, Medellín</div>
+                </div>
+              </div>
+            </div>
+            <div class="testimonials-carousel__card">
+              <p class="testimonials-carousel__quote">"El audio espacial transformó mi flujo de edición. Ubico cada capa de sonido con precisión que antes solo tenía en estudio."</p>
+              <div class="testimonials-carousel__author">
+                <div class="testimonials-carousel__avatar">DB</div>
+                <div class="testimonials-carousel__info">
+                  <div class="testimonials-carousel__name">Diego Alejandro Buitrago</div>
+                  <div class="testimonials-carousel__role">Editor Audiovisual, Bogotá</div>
+                </div>
+              </div>
+            </div>
+            <div class="testimonials-carousel__card">
+              <p class="testimonials-carousel__quote">"Los compré con dudas por el precio y a las dos semanas le regalé otro par a mi esposa. La calidad supera marcas de 3x el valor."</p>
+              <div class="testimonials-carousel__author">
+                <div class="testimonials-carousel__avatar">CV</div>
+                <div class="testimonials-carousel__info">
+                  <div class="testimonials-carousel__name">Camilo Ernesto Vargas</div>
+                  <div class="testimonials-carousel__role">Empresario, Cali</div>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+        <div class="testimonials-carousel__controls">
+          <div class="testimonials-carousel__counter">
+            <span class="testimonials-carousel__current">01</span>
+            <span class="testimonials-carousel__sep">—</span>
+            <span class="testimonials-carousel__total">04</span>
+          </div>
+          <div class="testimonials-carousel__dots"></div>
+          <div class="testimonials-carousel__arrows">
+            <button class="testimonials-carousel__arrow" id="carousel-prev">
+              <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round">
+                <path d="M19 12H5M12 19l-7-7 7-7"/>
+              </svg>
+            </button>
+            <button class="testimonials-carousel__arrow" id="carousel-next">
+              <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round">
+                <path d="M5 12h14M12 5l7 7-7 7"/>
+              </svg>
+            </button>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ============================================================
+       CTA
+       ============================================================ -->
+  <section class="cta-section section" id="cta">
+    <div class="wrapper">
+      <div class="cta-section__content">
+        <p class="label cta-section__label">¿Listo para elevarte?</p>
+        <h2 class="display cta-section__title">Construyamos<br>tu landing.</h2>
+        <a href="mailto:hello@convertix.io" class="cta-section__btn">
+          Iniciar un proyecto
+          <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round">
+            <path d="M5 12h14M12 5l7 7-7 7"/>
+          </svg>
+        </a>
+      </div>
+    </div>
+  </section>
+
+  <!-- ============================================================
+       FEATURE MODALS — FLIP animation shared elements
+       ============================================================ -->
+  <div class="feature-modal" id="feature-modal" aria-hidden="true">
+    <div class="feature-modal__overlay"></div>
+    <div class="feature-modal__content">
+      <button class="feature-modal__close" aria-label="Cerrar">
+        <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"><path d="M18 6L6 18M6 6l12 12"/></svg>
+      </button>
+      <div class="feature-modal__icon" data-modal-icon></div>
+      <div class="feature-modal__header">
+        <span class="feature-modal__number" data-modal-number></span>
+        <h3 class="feature-modal__title" data-modal-title></h3>
+      </div>
+      <p class="feature-modal__desc" data-modal-desc></p>
+      <ul class="feature-modal__specs" data-modal-specs></ul>
+    </div>
+  </div>
+
+  <!-- ============================================================
+       FOOTER
+       ============================================================ -->
+  <footer class="footer">
+    <div class="wrapper">
+      <div class="footer__top">
+        <div>
+          <div class="footer__brand">Convertix</div>
+          <p class="footer__tagline">Audio inalámbrico premium. Diseñados para durar.</p>
+        </div>
+        <div>
+          <p class="footer__col-title">Navegación</p>
+          <ul class="footer__links">
+            <li><a href="#features">Características</a></li>
+            <li><a href="#showcase">Producto</a></li>
+            <li><a href="#lifestyle">Estilo de vida</a></li>
+            <li><a href="#reviews">Reseñas</a></li>
+          </ul>
+        </div>
+        <div>
+          <p class="footer__col-title">Contacto</p>
+          <ul class="footer__links">
+            <li><a href="https://convertixweb.app/" target="_blank" rel="noopener">convertixweb.app</a></li>
+            <li><a href="mailto:hello@convertix.io">hello@convertix.io</a></li>
+            <li><a href="https://www.instagram.com/convertixweb/" target="_blank" rel="noopener">Instagram</a></li>
+            <li><a href="https://www.facebook.com/profile.php?id=61588761966347" target="_blank" rel="noopener">Facebook</a></li>
+          </ul>
+        </div>
+      </div>
+      <div class="footer__bottom">
+        <p class="footer__copy">© 2026 Convertix. Todos los derechos reservados.</p>
+        <div class="footer__socials">
+          <a href="#" aria-label="Volver arriba" class="footer__scroll-top">
+            <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round">
+              <path d="M18 15l-6-6-6 6"/>
+            </svg>
+          </a>
+        </div>
+      </div>
+    </div>
+  </footer>
+
+  <!-- Scripts -->
+  <script src="src/scripts/three-hero.js"></script>
+  <script src="src/scripts/animations.js"></script>
+  <script src="src/scripts/carousel.js"></script>
+  <script src="src/scripts/modal.js"></script>
+
+</body>
+</html>

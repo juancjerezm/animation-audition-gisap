@@ -1,0 +1,67 @@
+/* ============================================================
+   HEADER
+   ============================================================ */
+
+.header {
+  position: fixed;
+  top: 0; left: 0; right: 0;
+  z-index: 100;
+  padding: 14px 0;
+  background: rgba(254,246,229,0.85);
+  backdrop-filter: blur(12px);
+  -webkit-backdrop-filter: blur(12px);
+  box-shadow: 0 1px 3px rgba(0,0,0,0.05), 0 4px 16px rgba(0,0,0,0.03);
+}
+
+.header__inner {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+}
+
+.header__logo {
+  line-height: 0;
+}
+
+.header__nav {
+  display: flex;
+  gap: 40px;
+}
+
+.header__nav a {
+  font-family: 'Syne', sans-serif;
+  font-size: 0.875rem;
+  font-weight: 500;
+  position: relative;
+}
+
+.header__nav a::after {
+  content: '';
+  position: absolute;
+  bottom: -4px;
+  left: 0;
+  width: 0;
+  height: 1px;
+  background: var(--ink);
+  transition: width 0.3s ease;
+}
+
+.header__nav a:hover::after { width: 100%; }
+
+.header__cta {
+  font-size: 0.875rem;
+  font-weight: 600;
+  padding: 10px 24px;
+  border: 1.5px solid var(--ink);
+  border-radius: 100px;
+  transition: background 0.3s ease, color 0.3s ease;
+}
+
+.header__cta:hover {
+  background: var(--ink);
+  color: var(--bg);
+}
+
+@media (max-width: 767px) {
+  .header__nav { display: none; }
+}

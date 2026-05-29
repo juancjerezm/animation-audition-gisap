@@ -1,0 +1,67 @@
+schema: spec-driven
+
+context: |
+  Tech stack: HTML5 + CSS3 + Vanilla JS + GSAP 3 (ScrollTrigger) + Three.js (r128) + Playwright (style scraping)
+  Architecture: Single-file landing page for Convertix premium wireless earbuds product
+  Testing: NOT AVAILABLE — no test runner (pure HTML/CSS/JS project)
+  Style: Premium light theme (#FEF6E5 cream base, #0a0a0a ink, #ff4552 accent), Inter typography, Three.js hero 3D
+
+strict_tdd: false
+
+rules:
+  proposal:
+    - Include rollback plan for risky changes
+    - Identify affected modules/packages
+  specs:
+    - Use Given/When/Then format for scenarios
+    - Use RFC 2119 keywords (MUST, SHALL, SHOULD, MAY)
+  design:
+    - Include sequence diagrams for complex flows
+    - Document architecture decisions with rationale
+  tasks:
+    - Group tasks by phase (infrastructure, implementation, testing)
+    - Use hierarchical numbering (1.1, 1.2, etc.)
+    - Keep tasks small enough to complete in one session
+  apply:
+    - Follow existing code patterns and conventions
+    - Load relevant coding skills for the project stack
+  verify:
+    - Run tests if test infrastructure exists
+    - Compare implementation against every spec scenario
+  archive:
+    - Warn before merging destructive deltas (large removals)
+
+testing:
+  detected: "2026-05-27"
+  test_runner:
+    available: false
+    reason: "No package.json — pure HTML/CSS/JS project with no Node.js test tooling"
+  unit_tests:
+    available: false
+  integration_tests:
+    available: false
+  e2e_tests:
+    available: false
+  coverage:
+    available: false
+  quality_tools:
+    linter: false
+    type_checker: false
+    formatter: false
+
+skills:
+  project_level:
+    - name: gsap-scrolltrigger
+      path: ".atl/skillsgsap-scrolltrigger-skill.md"
+      trigger: GSAP ScrollTrigger landing animations, scroll storytelling, product transitions
+  user_level:
+    - branch-pr
+    - chained-pr
+    - cognitive-doc-design
+    - comment-writer
+    - go-testing
+    - issue-creation
+    - judgment-day
+    - skill-creator
+    - skill-improver
+    - work-unit-commits

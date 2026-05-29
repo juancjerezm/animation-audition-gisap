@@ -1,0 +1,53 @@
+/* ============================================================
+   RESET & BASE
+   ============================================================ */
+
+*, *::before, *::after {
+  box-sizing: border-box;
+  margin: 0;
+  padding: 0;
+}
+
+:root {
+  --bg: #FEF6E5;
+  --bg-rgb: 254, 246, 229;
+  --bg-alt: #F5EFE0;
+  --ink: #0a0a0a;
+  --ink-muted: #555;
+  --accent: #ff4552;
+  --gold: #c0ae7f;
+  --white: #ffffff;
+}
+
+html {
+  scroll-behavior: smooth;
+  font-size: 16px;
+}
+
+body {
+  background-color: var(--bg);
+  color: var(--ink);
+  font-family: 'Inter', -apple-system, BlinkMacSystemFont, sans-serif;
+  line-height: 1.5;
+  overflow-x: hidden;
+}
+
+::selection {
+  background: var(--ink);
+  color: var(--bg);
+}
+
+a { color: inherit; text-decoration: none; }
+img { display: block; max-width: 100%; }
+
+/* Eliminar highlight de tap en mobile y outline de focus en click */
+* {
+  -webkit-tap-highlight-color: transparent;
+}
+*:focus-visible {
+  outline: 2px solid var(--ink);
+  outline-offset: 2px;
+}
+*:focus:not(:focus-visible) {
+  outline: none;
+}

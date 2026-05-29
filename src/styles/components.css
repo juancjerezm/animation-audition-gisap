@@ -1,0 +1,140 @@
+/* ============================================================
+   COMPONENTES
+   ============================================================ */
+
+/* ---- Feature Card ---- */
+
+.feature-card {
+  background: var(--bg);
+  padding: clamp(32px, 4vw, 56px);
+  position: relative;
+  overflow: hidden;
+  opacity: 0;
+  transform: translateY(40px);
+  cursor: pointer;
+}
+
+.feature-card::before {
+  content: '';
+  position: absolute;
+  top: 0; left: 0; right: 0;
+  height: 3px;
+  background: var(--accent);
+  transform: scaleX(0);
+  transform-origin: left;
+  transition: transform 0.6s cubic-bezier(0.16, 1, 0.3, 1);
+}
+
+.feature-card:hover::before { transform: scaleX(1); }
+
+.feature-card__number {
+  font-size: 0.75rem;
+  font-weight: 600;
+  letter-spacing: 0.1em;
+  opacity: 0.4;
+  margin-bottom: 32px;
+}
+
+.feature-card__icon {
+  width: 48px;
+  height: 48px;
+  margin-bottom: 24px;
+  opacity: 0.85;
+}
+
+.feature-card__title {
+  font-size: clamp(1.25rem, 2vw, 1.75rem);
+  font-weight: 700;
+  letter-spacing: -0.02em;
+  margin-bottom: 16px;
+}
+
+.feature-card__desc {
+  font-size: 0.9375rem;
+  color: var(--ink-muted);
+  line-height: 1.6;
+}
+
+/* ---- Showcase Image ---- */
+
+.showcase__image {
+  position: relative;
+  opacity: 0;
+  transform: translateX(40px);
+}
+
+.showcase__image img {
+  width: 100%;
+  border-radius: 20px;
+  filter: grayscale(15%);
+  transition: filter 0.6s ease, transform 0.6s ease;
+}
+
+.showcase__image:hover img {
+  filter: grayscale(0%);
+  transform: scale(1.02);
+}
+
+.showcase__image-glow {
+  position: absolute;
+  inset: -15%;
+  background: radial-gradient(circle at center, rgba(192,174,127,0.12) 0%, transparent 65%);
+  pointer-events: none;
+}
+
+/* ---- Lifestyle Images ---- */
+
+.lifestyle__big {
+  grid-row: span 2;
+  border-radius: 20px;
+  overflow: hidden;
+  opacity: 0;
+  transform: translateY(40px);
+}
+
+.lifestyle__big img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  transition: transform 0.6s ease;
+}
+
+.lifestyle__big:hover img { transform: scale(1.04); }
+
+.lifestyle__small {
+  border-radius: 16px;
+  overflow: hidden;
+  opacity: 0;
+  transform: translateY(40px);
+}
+
+.lifestyle__small img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  transition: transform 0.6s ease;
+}
+
+.lifestyle__small:hover img { transform: scale(1.04); }
+
+/* ---- CTA Button ---- */
+
+.cta-section__btn {
+  display: inline-flex;
+  align-items: center;
+  gap: 12px;
+  padding: 18px 40px;
+  background: var(--bg);
+  color: var(--ink);
+  font-size: 1rem;
+  font-weight: 700;
+  border-radius: 100px;
+  transition: transform 0.3s ease, box-shadow 0.3s ease;
+  opacity: 0;
+  transform: translateY(20px);
+}
+
+.cta-section__btn:hover {
+  transform: translateY(-4px);
+  box-shadow: 0 20px 40px rgba(0,0,0,0.25);
+}

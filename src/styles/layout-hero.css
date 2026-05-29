@@ -1,0 +1,90 @@
+/* ============================================================
+   HERO 3D CANVAS
+   ============================================================ */
+
+#hero-canvas {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  z-index: 0;
+  pointer-events: none;
+}
+
+/* ============================================================
+   HERO
+   ============================================================ */
+
+.hero {
+  position: relative;
+  z-index: 1;
+  min-height: 100vh;
+  display: flex;
+  flex-direction: column;
+  justify-content: flex-end;
+  padding-bottom: clamp(80px, 12vh, 140px);
+}
+
+.hero__content {
+  position: relative;
+}
+
+.hero__label {
+  margin-bottom: 32px;
+  opacity: 0;
+  transform: translateY(20px);
+}
+
+.hero__title {
+  font-size: clamp(3.5rem, 8vw, 7.5rem);
+  font-weight: 900;
+  line-height: 0.85;
+  letter-spacing: -0.05em;
+  margin-bottom: clamp(40px, 6vh, 80px);
+}
+
+.hero__title .char {
+  display: inline-block;
+  overflow: hidden;
+}
+
+.hero__title .char-inner {
+  display: inline-block;
+  transform: translateY(110%);
+}
+
+.hero__bottom {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 40px;
+  align-items: flex-end;
+}
+
+.hero__desc {
+  max-width: 420px;
+  opacity: 0;
+  transform: translateY(20px);
+}
+
+.hero__scroll {
+  text-align: center;
+  opacity: 0;
+}
+
+.hero__scroll-line {
+  display: inline-block;
+  width: 1px;
+  height: 60px;
+  background: var(--ink);
+  margin-bottom: 12px;
+  transform-origin: top;
+}
+
+@media (max-width: 767px) {
+  .hero {
+    justify-content: center;
+    padding-bottom: clamp(60px, 8vh, 100px);
+  }
+  .hero__bottom { grid-template-columns: 1fr; }
+}
