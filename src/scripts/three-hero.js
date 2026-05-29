@@ -2,12 +2,12 @@
    HERO 3D — Visualizador + Partículas
    ============================================================ */
 
+(function () {
+'use strict';
+
 /* ---- GUARDIAS DE PRODUCCIÓN ---- */
 const canvas = document.getElementById('hero-canvas');
 if (!canvas || typeof THREE === 'undefined') return;
-
-(function () {
-'use strict';
 
 /* ---- SETUP THREE.JS ---- */
 const renderer = new THREE.WebGLRenderer({ canvas, alpha: true, antialias: true });

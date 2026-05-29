@@ -2,10 +2,10 @@
    ANIMACIONES GSAP — Scroll triggers
    ============================================================ */
 
-if (typeof gsap === 'undefined' || typeof ScrollTrigger === 'undefined') return;
-
 (function () {
 'use strict';
+
+if (typeof gsap === 'undefined' || typeof ScrollTrigger === 'undefined') return;
 
 gsap.registerPlugin(ScrollTrigger);
 
