@@ -39,7 +39,7 @@ for (let i = 0; i < barCount; i++) {
 function updateVizPosition() {
   isMobile = window.innerWidth < 768;
   vizGroup.visible = true;
-  vizGroup.position.set(isMobile ? 0 : 4.5, isMobile ? -1.0 : -0.3, isMobile ? 2 : 0);
+  vizGroup.position.set(isMobile ? 0 : 3.5, isMobile ? -1.0 : -0.3, isMobile ? 2 : 0);
   vizGroup.scale.setScalar(isMobile ? 0.5 : 1);
   vizGroup.rotation.set(0, 0, 0);
 }
