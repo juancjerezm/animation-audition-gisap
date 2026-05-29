@@ -177,11 +177,22 @@ function animate() {
 
 animationId = requestAnimationFrame(animate);
 
-/* ---- REDIMENSIONAR ---- */
+/* ---- REDIMENSIONAR (ignora colapso de barra de direcciones en mobile) ---- */
+let lastW = window.innerWidth;
+let lastH = window.innerHeight;
+
 window.addEventListener('resize', () => {
-  camera.aspect = window.innerWidth / window.innerHeight;
+  const w = window.innerWidth;
+  const h = window.innerHeight;
+  /* Solo reacciona a cambios reales: orientación o resize de escritorio.
+     Ignora el colapso de address bar (Δ ~56px) que dispara resize fantasma. */
+  if (Math.abs(w - lastW) < 2 && Math.abs(h - lastH) < 60) return;
+  lastW = w;
+  lastH = h;
+
+  camera.aspect = w / h;
   camera.updateProjectionMatrix();
-  renderer.setSize(window.innerWidth, window.innerHeight);
+  renderer.setSize(w, h);
   updateVizPosition();
   if (typeof ScrollTrigger !== 'undefined') ScrollTrigger.refresh();
 });
