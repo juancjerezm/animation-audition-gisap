@@ -40,7 +40,7 @@ function updateVizPosition() {
 updateVizPosition();
 
 /* ---- PARTÍCULAS ---- */
-const particleCount = 120;
+const particleCount = 135;
 const particleGeo = new THREE.BufferGeometry();
 const positions = new Float32Array(particleCount * 3);
 const particleOriginals = new Float32Array(particleCount * 3);
